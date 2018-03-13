@@ -1,0 +1,6 @@
+#!/home/alexei/PycharmProjects/learning/Machine_learning/venv/bin/python
+
+from notebook.nbextensions import main
+
+if __name__ == '__main__':
+    main()
