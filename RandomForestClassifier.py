@@ -16,12 +16,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 
 class random_forest_classifier():
-    '''Собственно, сам класс'''
-
 
     def __init__(self, N):
-        '''N - Это количество деревьев. forest - список объектов-деревьев, voting - будущий список
-        ответов этих деревьев, которые будут использоваться для голосования'''
         self.voting = []
         self.forest = []
         for i in range(0, N):
@@ -40,8 +36,6 @@ class random_forest_classifier():
         return new_X_train, new_y_train
 
     def most_frequent(self, mas):
-        '''Функция возвращает наиболее часто встречающийся
-        класс из имеющихся в массиве'''
         clMas = []
         for i in range(0, len(mas)):
             add = 1
@@ -61,16 +55,12 @@ class random_forest_classifier():
         return max[0]
 
     def learn_forest(self, X_train, y_train, tree_size):
-        '''Обучаем лес, что и следует из названия. tree_size - это ограничение по размеру дерева.
-        train_size - Это количество признаков от их общего числа, которое надо использовать
-        для каждого дерева'''
         for i in range(0, len(self.forest)):
             train = self.shiffle(X_train, y_train)
             self.forest[i].learn(train[0], train[1], tree_size)
             print(i)
 
     def predict_forest(self, X_new):
-        '''Предсказание. X_new - наш объект со своими признаками'''
         self.voting.clear()
         for i in range(0, len(self.forest)):
             self.voting.append(self.forest[i].predict(X_new))
@@ -80,7 +70,6 @@ class random_forest_classifier():
 new_forest = random_forest_classifier(100)
 new_forest.learn_forest(X_train, y_train, 20)
 
-'''Всё, что ниже - для оценки правильности даваемых ответов'''
 divide = [0, 0]
 for i in range(0, len(X_test)):
     if new_forest.predict_forest(X_test[i]) == y_test[i]:
