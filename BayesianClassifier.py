@@ -26,7 +26,7 @@ class FMas():
 
 
 
-
+'''Работает только с дискретными признаками'''
 class BayesianClassifier():
 
     def __init__(self):
@@ -90,6 +90,7 @@ y_test = ["Птица", "Насекомое", "Животное", "Птица"]
 newBayes = BayesianClassifier()
 newBayes.learn(X_train, y_train)
 
+'''Определяется точность классификатора'''
 divide = [0, 0]
 for i in range(0, len(X_test)):
     if newBayes.predict(X_test[i]) == y_test[i]:
