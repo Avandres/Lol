@@ -1,4 +1,3 @@
-from sklearn import decomposition
 import numpy
 
 class PCA():
@@ -87,15 +86,3 @@ class PCA():
         V = -V
         New_X_train = numpy.dot(V, X_train)
         return New_X_train
-
-x = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],[15, 20, 25, 30, 35, 40, 45, 50, 55, 60]]
-X_train = numpy.asarray(x)
-
-skPCA = decomposition.PCA(n_components=1)
-myPCA = PCA()
-skX = skPCA.fit_transform(numpy.transpose(X_train))
-X = myPCA.Center(X_train)
-X = myPCA.Proect(X)
-print(skX)
-print()
-print(X)
